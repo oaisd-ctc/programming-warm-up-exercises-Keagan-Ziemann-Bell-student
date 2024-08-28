@@ -7,20 +7,34 @@ namespace NoviceChallenges
         static void Main(string[] args)
         {
             // Use the Main method to test your functions.
+            Console.WriteLine(Add(2,3));
+            Console.WriteLine(IsEven(6));
+            Console.WriteLine(IsEven(5));
+            Console.WriteLine(MaxOfThree(3,1,1));
+            Console.WriteLine(StringLength("So Cool!"));
+            Console.WriteLine(ReverseString("Hello!"));
+            Console.WriteLine(Factorial(6));
+            Console.WriteLine(IsPrime(89));
+            Console.WriteLine(Fibonacci(6));
         }
 
         // 1. Return the sum of two numbers.
         public static int Add(int a, int b)
         {
             // TODO: Implement this method.
-            return 0;
+            int result = a + b;
+            return result;
         }
 
         // 2. Given an integer, return true if it's even, else return false.
         public static bool IsEven(int number)
         {
             // TODO: Implement this method.
-            return false;
+            bool evenCheck = false;
+            if (number % 2 == 0) {
+                evenCheck = true;
+            }
+            return evenCheck;
         }
 
         // 3. Return the largest of three numbers.
@@ -28,14 +42,26 @@ namespace NoviceChallenges
         {
             // HINT: You might want to use Math.Max function.
             // TODO: Implement this method.
-            return 0;
+            int hightestNumber;
+            if( a >= b && a >= c) {
+                hightestNumber = a;
+            } else if( b >= a && b >= c) {
+                hightestNumber = b;
+            } else {
+                hightestNumber = c;
+            }
+            return hightestNumber;
         }
 
         // 4. Return the length of the given string.
         public static int StringLength(string s)
         {
             // TODO: Implement this method.
-            return 0;
+            int numberOfChar = 0;
+            foreach (char character in s) {
+                numberOfChar++;
+            }
+            return numberOfChar;
         }
 
         // 5. Return true if the string starts with "Hello", otherwise return false.
@@ -43,7 +69,13 @@ namespace NoviceChallenges
         {
             // HINT: Use the string method "StartsWith".
             // TODO: Implement this method.
-            return false;
+            bool helloCheck;
+            if (s.StartsWith("Hello")) {
+                helloCheck = true;
+            } else {
+                helloCheck = false;
+            }
+            return helloCheck;
         }
 
         // 6. Reverse a given string.
@@ -51,15 +83,24 @@ namespace NoviceChallenges
         {
             char[] charArray = s.ToCharArray();
             // TODO: Reverse the charArray.
-            return new string(charArray);
+            int index = charArray.Count() - 1;
+            string result = "";
+            for (int  i = index; i >= 0; i--) {
+                result += charArray[i];
+            }
+            return result;
         }
 
         // 7. Return the factorial of a number.
         public static int Factorial(int n)
         {
             if (n == 0) return 1;
+            int result = n;
             // TODO: Calculate the factorial.
-            return 0;
+            for (int i = n- 1; i > 0; i--) {
+                result *= i;
+            }
+            return result;
         }
 
         // 8. Check if a number is a prime number.
@@ -70,6 +111,14 @@ namespace NoviceChallenges
             {
                 if (number % i == 0) return false;
             }
+            for (int i = number - 1; i > 0; i--) {
+                if (number % i == 0) {
+                    return false;
+                } else {
+                    return true;
+                }
+
+            }
             // TODO: Return the correct boolean value.
             return false;
         }
@@ -79,18 +128,30 @@ namespace NoviceChallenges
         {
             if (n <= 1) return n;
             // TODO: Calculate the nth Fibonacci number.
-            return 0;
+            int currentFib = 0;
+            int twoAgoFib = 0;
+            int previousFib = 1 ;
+            for (int i = 2; i <= n; i++) {
+                currentFib = twoAgoFib + previousFib;
+                twoAgoFib = previousFib;
+                previousFib = currentFib;
+            }
+            return currentFib;
         }
 
         // 10. Given an array of integers, return the largest number.
         public static int LargestInArray(int[] numbers)
         {
-            int largest = numbers[0];
+
+            int max = 0;
             for (int i = 1; i < numbers.Length; i++)
             {
                 // TODO: Find the largest number in the array.
+                if(numbers[i] > max) {
+                    max = numbers[i];
+                }
             }
-            return largest;
+            return max;
         }
 
         // 11. Check if a string is a palindrome (reads the same forward and backward).
