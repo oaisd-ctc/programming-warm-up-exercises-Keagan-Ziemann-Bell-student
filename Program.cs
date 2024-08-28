@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace NoviceChallenges
 {
@@ -16,6 +17,14 @@ namespace NoviceChallenges
             Console.WriteLine(Factorial(6));
             Console.WriteLine(IsPrime(89));
             Console.WriteLine(Fibonacci(6));
+            int[] array = {1, 7, 89};
+            Console.WriteLine(LargestInArray(array));
+            Console.WriteLine(IsPalindrome("raceca"));
+            Console.WriteLine(IsPalindrome("racecar"));
+            Console.WriteLine(ArraySum(array));
+            Console.WriteLine(CharCount("NNnNnooo Way", 'n'));
+            Console.WriteLine(ConcatenateStrings("Yes", "No"));
+            Console.WriteLine(SwapEnds("Doctor"));
         }
 
         // 1. Return the sum of two numbers.
@@ -157,7 +166,19 @@ namespace NoviceChallenges
         // 11. Check if a string is a palindrome (reads the same forward and backward).
         public static bool IsPalindrome(string s)
         {
+            s = s.ToLower();
             // TODO: Determine if the string is a palindrome.
+            string orignal = s;
+            char[] charArray = s.ToCharArray();
+            // TODO: Reverse the charArray.
+            int index = charArray.Count() - 1;
+            string reversedString = "";
+            for (int  i = index; i >= 0; i--) {
+                reversedString += charArray[i];
+            }
+            if (reversedString == orignal) {
+                return true;
+            }
             return false;
         }
 
@@ -166,14 +187,23 @@ namespace NoviceChallenges
         {
             int sum = 0;
             // TODO: Calculate the sum of the array's elements.
+            foreach (int num in numbers) {
+                sum += num;
+            }
             return sum;
         }
 
         // 13. Given a string, count how many times a specified character appears in it.
         public static int CharCount(string s, char c)
         {
+            s = s.ToLower();
             int count = 0;
             // TODO: Count how many times character c appears in string s.
+            foreach (char character in s) {
+                if  (character == c) {
+                    count++;
+                }
+            }
             return count;
         }
 
@@ -181,7 +211,8 @@ namespace NoviceChallenges
         public static string ConcatenateStrings(string str1, string str2)
         {
             // TODO: Concatenate the two strings with a space in between.
-            return "";
+            string result = str1 + " " + str2;
+            return result;
         }
 
         // 15. Given a string, return a new string where the first and last characters have been swapped.
@@ -191,7 +222,10 @@ namespace NoviceChallenges
             char firstChar = s[0];
             char lastChar = s[s.Length - 1];
             // TODO: Swap the first and last characters and return the modified string.
-            return "";
+            char[] charArray = s.ToCharArray();
+            charArray[0] = lastChar;
+            charArray[s.Length - 1] = firstChar;
+            return new string(charArray);
         }
     }
 }
