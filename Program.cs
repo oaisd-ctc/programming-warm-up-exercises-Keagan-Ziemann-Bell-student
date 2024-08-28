@@ -92,7 +92,7 @@ namespace NoviceChallenges
         {
             char[] charArray = s.ToCharArray();
             // TODO: Reverse the charArray.
-            int index = charArray.Count() - 1;
+            int index = charArray.Length - 1;
             string result = "";
             for (int  i = index; i >= 0; i--) {
                 result += charArray[i];
