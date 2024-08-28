@@ -15,7 +15,7 @@ namespace NoviceChallenges
             Console.WriteLine(StringLength("So Cool!"));
             Console.WriteLine(ReverseString("Hello!"));
             Console.WriteLine(Factorial(6));
-            Console.WriteLine(IsPrime(89));
+            Console.WriteLine(IsPrime(9698564));
             Console.WriteLine(Fibonacci(6));
             int[] array = {1, 7, 89};
             Console.WriteLine(LargestInArray(array));
@@ -123,13 +123,11 @@ namespace NoviceChallenges
             for (int i = number - 1; i > 0; i--) {
                 if (number % i == 0) {
                     return false;
-                } else {
-                    return true;
+                } else { 
                 }
-
             }
             // TODO: Return the correct boolean value.
-            return false;
+            return true;
         }
 
         // 9. Return the nth Fibonacci number.
