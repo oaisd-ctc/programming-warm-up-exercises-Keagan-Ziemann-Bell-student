@@ -7,6 +7,9 @@ namespace NoviceChallenges
     {
         static void Main(string[] args)
         {
+            //Example array for test cases
+            int[] array = {1, 7, 89};
+
             // Use the Main method to test your functions.
             Console.WriteLine(Add(2,3));
             Console.WriteLine(IsEven(6));
@@ -15,9 +18,8 @@ namespace NoviceChallenges
             Console.WriteLine(StringLength("So Cool!"));
             Console.WriteLine(ReverseString("Hello!"));
             Console.WriteLine(Factorial(6));
-            Console.WriteLine(IsPrime(9698564));
+            Console.WriteLine(IsPrime(925223));
             Console.WriteLine(Fibonacci(6));
-            int[] array = {1, 7, 89};
             Console.WriteLine(LargestInArray(array));
             Console.WriteLine(IsPalindrome("raceca"));
             Console.WriteLine(IsPalindrome("racecar"));
@@ -40,6 +42,7 @@ namespace NoviceChallenges
         {
             // TODO: Implement this method.
             bool evenCheck = false;
+            //if number is divisble by two pass true
             if (number % 2 == 0) {
                 evenCheck = true;
             }
@@ -52,6 +55,7 @@ namespace NoviceChallenges
             // HINT: You might want to use Math.Max function.
             // TODO: Implement this method.
             int hightestNumber;
+            //Compares each number to two others to find which is greatest
             if( a >= b && a >= c) {
                 hightestNumber = a;
             } else if( b >= a && b >= c) {
@@ -67,6 +71,7 @@ namespace NoviceChallenges
         {
             // TODO: Implement this method.
             int numberOfChar = 0;
+            //Iterates through every character in a string incrementing numberOfChar each time
             foreach (char character in s) {
                 numberOfChar++;
             }
@@ -79,6 +84,7 @@ namespace NoviceChallenges
             // HINT: Use the string method "StartsWith".
             // TODO: Implement this method.
             bool helloCheck;
+            //checks if the string starts with hello and returns the valid value
             if (s.StartsWith("Hello")) {
                 helloCheck = true;
             } else {
@@ -94,6 +100,7 @@ namespace NoviceChallenges
             // TODO: Reverse the charArray.
             int index = charArray.Length - 1;
             string result = "";
+            //iterate from the end of the string to the start adding a character each time. 
             for (int  i = index; i >= 0; i--) {
                 result += charArray[i];
             }
@@ -106,6 +113,7 @@ namespace NoviceChallenges
             if (n == 0) return 1;
             int result = n;
             // TODO: Calculate the factorial.
+            //for every number less than n multiply n by that number
             for (int i = n- 1; i > 0; i--) {
                 result *= i;
             }
@@ -116,11 +124,8 @@ namespace NoviceChallenges
         public static bool IsPrime(int number)
         {
             if (number <= 1) return false;
-            for (int i = 2; i < number; i++)
-            {
-                if (number % i == 0) return false;
-            }
-            for (int i = number - 1; i > 0; i--) {
+            //Checks every number greater than one and less than the input to see if its divisble with the orignal input
+            for (int i = number - 1; i > 1; i--) {
                 if (number % i == 0) {
                     return false;
                 } else { 
@@ -138,6 +143,7 @@ namespace NoviceChallenges
             int currentFib = 0;
             int twoAgoFib = 0;
             int previousFib = 1 ;
+            //Loops through the sequence starting on 2 up until the sequence at the inputs value
             for (int i = 2; i <= n; i++) {
                 currentFib = twoAgoFib + previousFib;
                 twoAgoFib = previousFib;
@@ -151,6 +157,7 @@ namespace NoviceChallenges
         {
 
             int max = 0;
+            //Holds a max variable that constanstly checks in the loop if anything is greater than it
             for (int i = 1; i < numbers.Length; i++)
             {
                 // TODO: Find the largest number in the array.
@@ -168,9 +175,9 @@ namespace NoviceChallenges
             // TODO: Determine if the string is a palindrome.
             string orignal = s;
             char[] charArray = s.ToCharArray();
-            // TODO: Reverse the charArray.
             int index = charArray.Count() - 1;
             string reversedString = "";
+            // reverse the string given and then compare that to the input
             for (int  i = index; i >= 0; i--) {
                 reversedString += charArray[i];
             }
@@ -185,6 +192,7 @@ namespace NoviceChallenges
         {
             int sum = 0;
             // TODO: Calculate the sum of the array's elements.
+            //Loops through the array and adds the elements value to sum
             foreach (int num in numbers) {
                 sum += num;
             }
@@ -197,6 +205,7 @@ namespace NoviceChallenges
             s = s.ToLower();
             int count = 0;
             // TODO: Count how many times character c appears in string s.
+            //loops through the string to see if any of the characters are equal to the input
             foreach (char character in s) {
                 if  (character == c) {
                     count++;
@@ -209,6 +218,7 @@ namespace NoviceChallenges
         public static string ConcatenateStrings(string str1, string str2)
         {
             // TODO: Concatenate the two strings with a space in between.
+            //Adds str 1 and str 2 together with a space between
             string result = str1 + " " + str2;
             return result;
         }
@@ -220,6 +230,7 @@ namespace NoviceChallenges
             char firstChar = s[0];
             char lastChar = s[s.Length - 1];
             // TODO: Swap the first and last characters and return the modified string.
+            //Create a charArray to be able to swap individual characters in the string
             char[] charArray = s.ToCharArray();
             charArray[0] = lastChar;
             charArray[s.Length - 1] = firstChar;
